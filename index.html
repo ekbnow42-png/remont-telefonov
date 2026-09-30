@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ремонт телефонов, 2-й Вольный переулок, 11, Москва</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF1F5;--surface:#fff;--ink:#14202E;--muted:#55657a;--line:#d5dce6;--accent:#1F4FFF;--on-accent:#fff;--signal:#FFC83D;--on-signal:#14202E;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1722;--surface:#17212F;--ink:#E8EDF4;--muted:#9aa9bc;--line:#2a3749;--accent:#6E8CFF;--on-accent:#0F1722}}
+:root[data-theme="dark"]{--bg:#0F1722;--surface:#17212F;--ink:#E8EDF4;--muted:#9aa9bc;--line:#2a3749;--accent:#6E8CFF;--on-accent:#0F1722}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 Onest,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2{font-family:Unbounded,Onest,system-ui,sans-serif;line-height:1.1;margin:0;letter-spacing:-.01em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0}
+.logo{font:700 15px Unbounded,sans-serif;text-decoration:none}
+.tel{font-weight:600;text-decoration:none}
+.hero{padding:40px 0 56px;display:grid;gap:32px;grid-template-columns:1.1fr .9fr;align-items:center}
+.hero h1{font-size:clamp(32px,6vw,56px);font-weight:700}
+.hero p{max-width:46ch;color:var(--muted);font-size:19px;margin:20px 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:15px 24px;border-radius:12px;font-weight:600;text-decoration:none;border:2px solid var(--ink)}
+.btn.main{background:var(--signal);color:var(--on-signal);border-color:var(--signal)}
+.btn:hover{transform:translateY(-2px)}
+.ticket{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;position:relative}
+.ticket::before{content:"";position:absolute;left:0;right:0;top:0;height:8px;background:var(--accent);border-radius:20px 20px 0 0}
+.ticket h2{font-size:18px;margin:10px 0 14px}
+.ticket ul{list-style:none;margin:0;padding:0}
+.ticket li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line)}
+.ticket li:last-child{border:0}
+.ticket b{white-space:nowrap}
+section{padding:56px 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(24px,4vw,34px);margin-bottom:28px}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.grid h3{margin:0 0 6px;font-size:18px}
+.grid p{margin:0;color:var(--muted)}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--on-accent);font:700 15px Unbounded,sans-serif;margin-bottom:12px}
+.steps strong{display:block}
+.steps span{color:var(--muted)}
+.contacts{display:grid;gap:12px;font-size:19px}
+.contacts span{color:var(--muted);display:block;font-size:15px}
+.wide{overflow-x:auto}
+footer{padding:28px 0 36px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+@media (max-width:760px){.hero{grid-template-columns:1fr;padding-top:16px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
+.chips{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:0}
+.chips li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:500}
+blockquote{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px}
+blockquote p{margin:0 0 10px}
+blockquote cite{color:var(--muted);font-size:15px;font-style:normal}
+.rate{font-weight:600;margin:-12px 0 24px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<a class="logo" href="#">Ремонт телефонов</a>
+<a class="tel" href="tel:+79126398613">8 (912) 639-86-13</a>
+</header>
+
+<main>
+<div class="hero">
+<div>
+<h1>Ремонт телефонов в Москве</h1>
+<p>Бесплатная диагностика, выезд на дом и оплата любым удобным способом. Сначала называем точную цену, потом чиним.</p>
+<div class="btns">
+<a class="btn main" href="tel:+79126398613">Позвонить</a>
+<a class="btn" href="#prices">Цены на ремонт</a>
+</div>
+</div>
+<div class="ticket" id="prices">
+<h2>Замена экрана iPhone</h2>
+<ul>
+<li><span>iPhone 13</span><b>4 500 ₽</b></li>
+<li><span>iPhone 14</span><b>5 500 ₽</b></li>
+<li><span>iPhone 15</span><b>6 500 ₽</b></li>
+<li><span>Диагностика</span><b>бесплатно</b></li>
+</ul>
+<p style="margin:12px 0 0;color:var(--muted);font-size:15px">Другие модели и виды ремонта: звоните, назовём цену.</p>
+</div>
+</div>
+
+<section>
+<h2>Какие телефоны ремонтируем</h2>
+<ul class="chips">
+<li>Apple</li><li>Samsung</li><li>Xiaomi</li><li>Huawei</li><li>Honor</li><li>Oppo</li><li>realme</li><li>Vivo</li><li>OnePlus</li><li>Nothing</li><li>CMF by Nothing</li><li>Infinix</li><li>Tecno</li><li>itel</li><li>Blackview</li><li>Nokia</li>
+</ul>
+</section>
+
+<section>
+<h2>Чем мы удобны</h2>
+<div class="grid">
+<div><h3>Бесплатная диагностика</h3><p>Находим причину и называем цену до начала ремонта.</p></div>
+<div><h3>Выезд на дом</h3><p>Если не можете приехать сами, договоримся по телефону.</p></div>
+<div><h3>Любая оплата</h3><p>Карта, QR-код, СБП, перевод или наличные.</p></div>
+<div><h3>Срочная печать</h3><p>Распечатаем документы, пока вы ждёте телефон.</p></div>
+</div>
+</section>
+
+<section>
+<h2>Как проходит ремонт</h2>
+<ol class="steps">
+<li><strong>Приносите телефон</strong><span>Или звоните, мы подскажем, что проверить.</span></li>
+<li><strong>Диагностика</strong><span>Находим причину и называем точную цену.</span></li>
+<li><strong>Ремонт</strong><span>Начинаем только после вашего согласия.</span></li>
+<li><strong>Выдача</strong><span>Вы проверяете работу телефона при нас.</span></li>
+</ol>
+</section>
+
+<section>
+<h2>Отзывы клиентов</h2>
+<p class="rate">4,2 на Яндекс Картах</p>
+<div class="grid">
+<blockquote><p>Мастер достаточно компетентный, общительный, приятный.</p><cite>Костя, замена камеры Samsung S25 Ultra</cite></blockquote>
+<blockquote><p>Моментально определил причину, через час забрала работающий телефон.</p><cite>Татьяна, перезагрузки телефона</cite></blockquote>
+<blockquote><p>Подключили устройство за 10 минут. Очень рекомендую!</p><cite>Виктор</cite></blockquote>
+</div>
+</section>
+
+<section>
+<h2>Как нас найти</h2>
+<div class="contacts">
+<div><span>Адрес</span>г. Москва, 2-й Вольный переулок, 11</div>
+<div><span>Ближайшая остановка</span>9-я улица Соколиной Горы, 12 (124 м)</div>
+<div><span>Часы работы</span>10:00–20:00</div>
+<div><span>Телефон</span><a href="tel:+79126398613">8 (912) 639-86-13</a></div>
+<div><a href="https://yandex.com/maps/org/remont_telefonov/20395909093/">Маршрут и все отзывы на Яндекс Картах</a></div>
+</div>
+</section>
+</main>
+</div>
+<footer><div class="wrap">© Ремонт телефонов, Москва</div></footer>
+</body>
+</html>
