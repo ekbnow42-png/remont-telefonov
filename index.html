@@ -76,6 +76,23 @@ blockquote cite{color:var(--muted);font-size:15px;font-style:normal}
 .gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;border:1px solid var(--line);display:block}
 .gallery figcaption{margin-top:8px;color:var(--muted);font-size:15px}
 @media (max-width:760px){.master{grid-template-columns:1fr}.master img{max-width:280px}}
+.bar{display:none}
+.cb form{display:grid;gap:12px;max-width:520px}
+.cb label{display:grid;gap:6px;font-weight:500}
+.cb input,.cb textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 14px;width:100%}
+.cb textarea{min-height:90px;resize:vertical}
+.cb button{font:inherit;font-weight:600;cursor:pointer;background:var(--signal);color:var(--on-signal);border:0;border-radius:12px;padding:15px 24px}
+.cb button:disabled{opacity:.6;cursor:wait}
+.cb small{color:var(--muted)}
+#cbstatus{font-weight:600;min-height:1.5em}
+.map{display:grid;gap:16px;grid-template-columns:1fr 1.3fr;align-items:start}
+.map iframe{width:100%;height:360px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+@media (max-width:760px){
+.map{grid-template-columns:1fr}.map iframe{height:300px}
+.bar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:10;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:1px solid var(--line)}
+.bar a{text-align:center;padding:14px;border-radius:12px;font-weight:600;text-decoration:none;border:2px solid var(--ink)}
+.bar a:first-child{background:var(--signal);color:var(--on-signal);border-color:var(--signal)}
+body{padding-bottom:76px}}
 </style>
 </head>
 <body>
@@ -159,19 +176,50 @@ blockquote cite{color:var(--muted);font-size:15px;font-style:normal}
 </div>
 </section>
 
+<section class="cb" id="callback" hidden>
+<h2>Перезвоним вам</h2>
+<form id="cbform" novalidate>
+<input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+<input type="hidden" name="subject" value="Заявка с сайта: перезвоните мне">
+<input type="hidden" name="from_name" value="Сайт «Ремонт телефонов»">
+<input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+<label>Ваше имя<input name="name" autocomplete="name"></label>
+<label>Телефон<input name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+7 ..."></label>
+<label>Что случилось с телефоном (необязательно)<textarea name="message"></textarea></label>
+<button type="submit">Жду звонка</button>
+<small>Нажимая кнопку, вы соглашаетесь на обработку персональных данных для связи с вами.</small>
+<div id="cbstatus" role="status"></div>
+</form>
+</section>
+
 <section>
 <h2>Как нас найти</h2>
+<div class="map">
 <div class="contacts">
 <div><span>Адрес</span>г. Москва, 2-й Вольный переулок, 11</div>
 <div><span>Ближайшая остановка</span>9-я улица Соколиной Горы, 12 (124 м)</div>
 <div><span>Часы работы</span>10:00–20:00</div>
 <div><span>Телефон</span><a href="tel:+79126398613">8 (912) 639-86-13</a></div>
 <div><span>Мессенджер</span><a href="https://max.ru/u/f9LHodD0cOI5-LDu86qhf6pcnu-JR9zJnleRtuEXiy7_QotFuLu2t8F3a10" target="_blank" rel="noopener">Написать в Max</a></div>
-<div><a href="https://yandex.com/maps/org/remont_telefonov/20395909093/">Маршрут и все отзывы на Яндекс Картах</a></div>
+<div class="btns"><a class="btn main" href="https://yandex.ru/maps/?rtext=~55.773726%2C37.739727&amp;rtt=auto" target="_blank" rel="noopener">Построить маршрут</a><a class="btn" href="https://yandex.com/maps/org/remont_telefonov/20395909093/" target="_blank" rel="noopener">Отзывы на картах</a></div>
+</div>
+<iframe title="Карта: 2-й Вольный переулок, 11" src="https://yandex.ru/map-widget/v1/?ll=37.739727%2C55.773726&amp;z=17&amp;pt=37.739727%2C55.773726%2Cpm2rdm" loading="lazy" allowfullscreen></iframe>
 </div>
 </section>
 </main>
 </div>
 <footer><div class="wrap">© Ремонт телефонов, Москва</div></footer>
+<nav class="bar" aria-label="Быстрая связь"><a href="tel:+79126398613">Позвонить</a><a href="https://max.ru/u/f9LHodD0cOI5-LDu86qhf6pcnu-JR9zJnleRtuEXiy7_QotFuLu2t8F3a10" target="_blank" rel="noopener">Max</a></nav>
+<script>
+(function(){var f=document.getElementById('cbform'),sec=document.getElementById('callback'),st=document.getElementById('cbstatus');
+var key=f.access_key.value;if(key&&key.indexOf('YOUR_')!==0){sec.hidden=false}
+f.addEventListener('submit',function(e){e.preventDefault();
+if(!f.phone.value.trim()){st.textContent='Укажите телефон, чтобы мы могли перезвонить.';return}
+var btn=f.querySelector('button');btn.disabled=true;st.textContent='Отправляем…';
+fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(f)))})
+.then(function(r){return r.json()}).then(function(d){if(!d.success)throw 0;st.textContent='Спасибо! Мы перезвоним вам в ближайшее время.';f.reset()})
+.catch(function(){st.textContent='Не получилось отправить. Позвоните нам: 8 (912) 639-86-13.'})
+.then(function(){btn.disabled=false})})})();
+</script>
 </body>
 </html>
